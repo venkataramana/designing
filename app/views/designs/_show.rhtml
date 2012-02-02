@@ -1,0 +1,40 @@
+
+<table border="0" width="900px" height="250px" align="center" style="margin-top:20px; margin-left:35px; margin-right:0px;">
+        <tr>
+                <td>
+                        <marquee scrollamount=150 behavior=slide>
+
+                                <table border="0" width="870px" height="200px" align="center" style="box-shadow: 0.1em 0.1em 1em black; margin-top:0px; margin-left:25px; margin-right:60px; color:#4B4F46; font-family:arial; background-color:white;border-radius: 7px;">
+                                        <tr>
+                                                <td colspan="2" style="padding-left:10px;"> <b style="color:#A36B04" > <%=@designs.length %> </b> most recent posts: </td>
+                                                <td> Click to <%= link_to "Post", "/designs/new"%> post here </td>
+                                        </tr>
+                                <%@designs.each do |design| %>
+                                                <tr>
+                                                        <td width="3%" style="background-color:#E7EF8D;padding-left:7px;">
+                                                                <%= image_tag("/images/aro.jpeg", :size=>"10x10")%>
+                                                        </td>
+                                                        <td  width="75%" style="background-color:#E7EF8D; font-size:14px;">
+                                                                Posted by <u style="color:#A36B04; font-size:14px;" ><%= design.design_name%>
+                                                        </td>
+                                                        <td style="background-color:#E7EF8D; padding-bottom:12px; text-align:right; font-size:12px;">
+                                                              <%= design.created_at.strftime('%Y-%b-%d :: %H:%M:%S')%>
+                                                         </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td width="3%" style="background-color:#D1E0BA; padding-left:7px;">
+                                                                <%= image_tag("/images/aro2.png", :size=>"10x10")%>
+                                                        </td>
+                                                        <td colspan="2" style="background-color:#D1E0BA; padding-left:10px; font-size:14px;">
+                                                              Email :<%= design.email%> </br>
+                                                              Post : <%= design.post%>
+                                                        </td>
+                                                </tr>
+                                <%end%>
+                                </table>
+                        </marquee>
+                </td>
+        </tr>
+</table>
+

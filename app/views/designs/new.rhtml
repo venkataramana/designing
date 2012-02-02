@@ -1,0 +1,58 @@
+ <style type="text/css">
+        .nolist {list-style-type:none;}
+        .nodot{list-style-image:url("/images/aro.jpeg"); margin-bottom:5px;}
+ </style>
+<div id="newpage">
+<table border="0" align="center" width="85%" style="box-shadow: 0.1em 0.1em 1em white; margin-top:0; margin-left:65px; margin-right:60px;  font-family:arial; color:#116659; background-color:#89A03D;border-radius: 8px;">
+               <tr>
+                        <td style="color:#EEF7E1; padding-left:5px;">
+                               <b> Post Creation: </b>
+                        </td>
+               </tr>
+
+               <tr>
+                        <td colspan="2" height="40%" style="background-color:#EEF7E1; color:#31470E; font-size:14px;">
+                                <table>
+                                        <tr>
+                                                <td>
+                                                        <ul class="nolost">
+                                                                <li class="nodot">Hello... If u wanna post somthing, just make use of follwing fields. </li>
+                                                                <li class="nodot">What ever intension you have, you can post. </li>
+                                                                <li class="nodot">There is an apraisal for posting many times, that will be sent to yous email. </li>
+                                                                <li class="nodot">No parliamentary words you should use, as it's a public web site. </li>
+                                                                 <li class="nodot">When posting your valuable delivery, please make sure your email should be valid. </li>
+                                                        </ul>
+
+                                                  </td>
+                                        </tr>
+                                </table>
+                        </td>
+                </tr>
+        <% form_for :design, @design, :url=> {:action=> "create"} do |f|%>
+               <tr>
+                        <td colspan="2" style="background-color:#EA8A8A; color:#F7EFEF; text-align:center;">
+                                <%= text_field_tag("", "Send your opinion as a post to us:", :disabled => true, :size=>"30x1")%>
+                        </td>
+                </tr>
+                <tr>
+                        <td style="padding-left:50px; box-shadow: 0.1em 0.1em 1em white;">
+                                <%= f.text_field :design_name, :placeholder=>"Enter Your Name:", :title=>"Enter your beautiful name"%>
+                        </td>
+                        <td style="text-align:right; padding-right:50px; box-shadow: 0.1em 0.1em 1em white;">
+                                <%= f.text_field :email, :placeholder=>"Enter Your Email:", :title=>"Enter your email"%>
+                        </td>
+                </tr>
+                <tr>
+                        <td colspan="2" style="text-align:center; box-shadow: 0.1em 0.1em 1em white;">
+                                <%= f.text_area :post, :size=>"70x4", :placeholder=>"Enter Your Opinion...", :title=>"Enter your opinion"%>
+                        </td>
+                </tr>
+                <tr>
+                        <td colspan="2" style="text-align:center; box-shadow: 0.1em 0.1em 1em white;">
+                                <%= f.submit "Post_Here"%>
+                        </td>
+                </tr>
+        <%end%>
+</table>
+</div>
+

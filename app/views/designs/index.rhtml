@@ -1,0 +1,156 @@
+ <script type="text/javascript">
+          var images= new Array(15);
+          var i=0; var t; var s=false; var def ="/images/car.gif";
+          var x=0;
+
+          window.onload = initialize()
+          {
+                  document.getElementsByTagName('body');
+          }
+          function initialize()
+          {
+	        images[0] ="/images/heli1.jpg";
+	        images[1] ="/images/heli2.jpg";
+	        images[2] ="/images/heli3.jpg";
+	        images[3] ="/images/heli4.jpg";
+	        images[4] ="/images/heli5.jpg";
+	        images[5] ="/images/heli6.jpg";
+	        images[6] ="/images/heli7.jpg";
+	        images[7] ="/images/heli8.jpg";
+	        images[8] ="/images/heli9.jpg";
+	        images[9] ="/images/heli10.jpg";
+	        images[10] ="/images/heli11.jpg";
+	        images[11] ="/images/heli12.jpg";
+	        images[12] ="/images/heli13.jpg";
+	        images[13] ="/images/heli14.jpg";
+	        images[14] ="/images/heli15.jpg";
+           }
+
+           function start()
+                {
+	              if(i>=images.length)
+	                  {
+	                    i=0;
+	                    document.imageDisplay.src=images[i];
+	                    i++;
+	                  }
+                        else {
+
+                              document.imageDisplay.src=images[i];
+                              i++;
+                        }
+                       t=setTimeout("start();", 800);
+	          }
+            function start1()
+                 {
+	                 if(s==false)
+	                 {
+                                 s=true;
+                                 start();
+                         }
+	         }
+           function stop1()
+                {
+                           clearTimeout(t);
+                            s=false;
+	        }
+
+           function nextone()
+                 {
+                       if(i >= images.length)
+	                  {
+                            document.imageDisplay.src=images[images.length-1];
+	                  }
+                        else {
+                            document.imageDisplay.src=images[i];
+                            i=i+1;
+                        }
+
+                 }
+            function previousone()
+                {
+                       if(i <= 0)
+                        {
+                             i=1;
+                             document.imageDisplay.src=images[0];
+                        }
+                        else if(i > 0 || i < images.length)
+                        {
+                                document.imageDisplay.src = images[i-2];
+                                i--;
+                                if(i == 0)
+                                {
+                                        i=1;
+                                        document.imageDisplay.src = images[0];
+                                }
+                        }
+                        else if(i >= images.length)
+                       {
+                              i=images.length-1;
+
+                              document.imageDisplay.src = images[i-1];
+                       }
+                        else
+                        {
+                                document.imageDisplay.src = images[0];
+                        }
+                }
+             function defaultimage()
+             {
+                clearTimeout(t);
+                document.imageDisplay.src="/images/car.gif";
+                s=false;
+             }
+  </script>
+
+<div id="newpage">
+         <form name="formone">
+                <table  border="0" style="margin-left:0px;margin-top:-90px; ">
+                        <tr>
+                                <td style="padding-left:0px; padding-bottom:20px;">
+                                        <img src = "/images/home2.png" alt="homepage">
+                                </td>
+                                <td width="55%" style="color:white; font-family:arial; padding-bottom:20px;">
+                                        <marquee scrollamount=2 behavior=alternate onmouseover="stop();" onmouseout="start();">
+                                        <%if @designs[0].nil? %>
+                                                No posts yet posted..!
+                                        <% else %>
+                                                Last post sent by <%= link_to "#{@designs[0].design_name}", "/designs/#{@designs[0].id}",:title=>"KilK to post", :remote=> true%>
+                                                Click on link to view
+                                        <%end%>
+                                        </marquee>
+                                </td>
+                                <td width="30%"> &nbsp;</td>
+                        </tr>
+                </table>
+                 <table border="0" align="center" style="margin-top:0px; margin-left:60px; margin-right:50px;">
+                      <tr>
+                                <td width="5%" style="text-align:right; padding-left:90px;">
+                                          <img style="cursor: pointer" src = "/images/prev.gif" alt="previous" onClick="previousone();">
+                                </td>
+                                <td colspan="2" style="height:250px;width:600px; outline:1px solid #B32744;" >
+                                                <img style="cursor: pointer" src = "/images/car.gif" alt="defaultimage" id = "imageDisplay" height = 250 width = 600 onClick="defaultimage();">
+
+                                </td>
+                               <td width="25%" style="text-align:left;">
+                                        <img style="cursor: pointer" src = "/images/next.gif" alt="next" onClick="nextone();">
+                                 </td>
+                        </tr>
+                        <tr>
+                                <td>
+                                        &nbsp;
+                                </td>
+                                 <td>
+                                         <img style="cursor: pointer" src = "/images/pause.png" alt="play" onClick="start1();">
+                                </td>
+                                <td style="text-align:right;">
+                                         <img style="cursor: pointer" src = "/images/play.png" alt="pause" onClick="stop1();">
+                                </td>
+                                <td>
+                                        &nbsp;
+                                </td>
+                        </tr>
+                </table>
+        </form>
+</div>
+
